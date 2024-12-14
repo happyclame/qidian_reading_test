@@ -971,6 +971,10 @@ document.addEventListener('DOMContentLoaded', function() {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                'Access-Control-Allow-origin':'*',
+                'Access-Control-Allow-Methods':'GET,POST',
+                'Access-Control-Allow-Headers':'Content-Type',
+                'Origin':window.location.origin
             },
             body: JSON.stringify(collectedData)  // 以 JSON 格式发送 collectedData
         })
