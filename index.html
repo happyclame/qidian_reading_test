@@ -46,6 +46,17 @@
 
     var timeline = [];
 
+    const start_trial = {
+        type: jsPsychHtmlButtonResponse,
+        stimulus: `<div style="text-align: center;">
+            <h1>欢迎参加实验！</h1>
+            <p>感谢您参与我们的实验调查。本实验将通过一些问题来了解您对文学小说内容的阅读感受。</p>
+            <p>请仔细阅读每个问题并根据您的真实感受作答。本实验共计15道题。</p>
+            <p>您可以点击“开始问卷”按钮来开始实验。</p>
+            </div>`,
+        choices: ["开始问卷"],
+    };
+
     //问题1：性别（单向选择）
     var trial_1 = {
         type:jsPsychSurveyMultiChoice,
@@ -256,7 +267,7 @@
             type:jsPsychSurveyHtmlForm,
             dataAsArray:true,//设置true，确保返回数组形式的数据
             html:"<div>"+
-                    "<h3>问题7-"+(index+1)+":请阅读小说段落，依据您的阅读感受选择该段落包含的情感内容。（不定项选择）</h3>"+
+                    "<h3>问题7-"+(index+1)+":请阅读小说段落，依据您的阅读感受选择该段落包含的情感内容。（不定项选择,共计八段）</h3>"+
                     "<p style='font-size:18px; margin-bottom: 20px;'>"+paragraph+"</p>"+
                     "<div>"+
                     q7_options.map(function(option){
@@ -652,7 +663,7 @@ document.addEventListener('DOMContentLoaded', function() {
     q10_paragraphs.forEach(function (texts,index){
         trial_10.push({
             type:jsPsychHtmlButtonResponse,
-            stimulus:"<h3>问题10：请阅读下面两段小说段落，选择您认为更加有趣并倾向继续阅读的段落。（二选一）</h3>"+
+            stimulus:"<h3>问题10：请阅读下面两段小说段落，选择您认为更加有趣并倾向继续阅读的段落。（二选一，共九组）</h3>"+
             "<p><strong>段落1：</strong>"+texts[0]+"</p>"+
             "<p><strong>段落2：</strong>"+texts[1]+"</p>",
             choices:["段落1","段落2"],
@@ -882,7 +893,7 @@ document.addEventListener('DOMContentLoaded', function() {
     q12_paragraphs.forEach(function (texts,index){
         trial_12.push({
             type:jsPsychHtmlButtonResponse,
-            stimulus:"<h3>问题12：请阅读下面两段小说段落，选择您更倾向付费阅读的段落。</h3>"+
+            stimulus:"<h3>问题12：请阅读下面两段小说段落，选择您更倾向付费阅读的段落。（二选一，共九组）</h3>"+
             "<p><strong>段落1：</strong>"+texts[0]+"</p>"+
             "<p><strong>段落2：</strong>"+texts[1]+"</p>",
             choices:["段落1","段落2"],
@@ -1051,6 +1062,7 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 
     timeline.push(
+        start_trial,
         trial_1,
         trial_2,
         trial_3,
