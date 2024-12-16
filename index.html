@@ -55,6 +55,12 @@
             <p>您可以点击“开始问卷”按钮来开始实验。</p>
             </div>`,
         choices: ["开始问卷"],
+        on_finish: function() {
+            // 记录实验开始时的时间戳（毫秒形式）
+            let start_time = Date.now();  // 获取当前时间戳（自1970年1月1日以来的毫秒数）
+            // 将记录的时间戳存入已定义的 collectedData 对象
+            collectedData.time = start_time;
+        }
     };
 
     //问题1：性别（单向选择）
